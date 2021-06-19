@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "ff9b1fe5-2a20-408b-a08a-f05244c983f5",
+		"name": "flask-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/user/sign_up",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/user/login",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/user/sign_up",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\" : \"omri\" , \"password\" : \"123456\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/user/sign_up",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "message",
+			"item": [
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/msg/read_msg",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/msg/read_msg",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"msg",
+								"read_msg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/msg/delete_msg",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/msg/delete_msg",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"msg",
+								"delete_msg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/msg/get_all_messages",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/msg/get_all_messages",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"msg",
+								"get_all_messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/msg/write_msg",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "noam",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"receiver\" : \"noa\" , \"message\" : \"Hi\", \"subject\" : \"how are you?\", \"creation_date\" : \"2021-06-18 19:00:57\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/msg/write_msg",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"msg",
+								"write_msg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://flask-project-api-msg.herokuapp.com/msg/get_all_unread_messages",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "omri",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://flask-project-api-msg.herokuapp.com/msg/get_all_unread_messages",
+							"protocol": "https",
+							"host": [
+								"flask-project-api-msg",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"msg",
+								"get_all_unread_messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
