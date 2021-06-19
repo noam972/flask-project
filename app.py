@@ -93,9 +93,10 @@ def sign_up():
         if len(password) > 8:
             return jsonify({'message': 'password is too long, please select password up to 8 characters.'})
 
+        name = User.query.filter_by(username=username)
+        if not name:
+            return 'name already taken!'
         user = User(username=username, password=password)
-        if not user:
-            return 'user already exist!'
         db.session.add(user)
         db.session.commit()
         return jsonify({'message': 'Welcome {}'.format(username)})
