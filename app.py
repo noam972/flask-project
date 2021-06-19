@@ -163,4 +163,4 @@ def hello_world():
 
 
 if __name__ == '__main__':  #check is its the main file
-    app.run(debug=True)
+    app.run()
