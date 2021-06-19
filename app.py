@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify,make_response
+from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
-#from flask_marshmallow import Marshmallow
 import pymysql
 from sqlalchemy import or_
 from datetime import datetime
@@ -8,15 +7,12 @@ from functools import wraps
 
 DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-
 app = Flask(__name__)
-pymysql.install_as_MySQLdb()  #to convert from pymysql to MYSQL DB.
-app.config['SECRET_KEY'] = 'secretkey'  #limits the clint accesses to the back
+pymysql.install_as_MySQLdb()  # to convert from pymysql to MYSQL DB.
+app.config['SECRET_KEY'] = 'secretkey'  # limits the clint accesses to the back
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b135a625f099ae:62853ebb@eu-cdbr-west-01.cleardb.com'\
                                         '/heroku_b4f91ef857282d3?'
-
-
 db = SQLAlchemy(app)
 
 
@@ -44,9 +40,6 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(8), nullable=False)
 
-#db.create_all()
-#db.session.commit()
-
 
 def auth_required(f):
     @wraps(f)
@@ -71,7 +64,7 @@ def get_all_msgs(read):
     if read:
         all_msg = Message.query.filter_by(receiver=username)
     else:
-        all_msg = Message.query.filter_by(receiver=username, unread=read)
+        all_msg = Message.query.filter_by(receiver=username, unread=True)
 
     messages = []
     for msg in all_msg:
@@ -128,6 +121,8 @@ def write_msg():
 @auth_required
 def get_all_msg():
     messages = get_all_msgs(True)
+    if len(messages) == 0:
+        return 'No messages in the system!'
     return jsonify({"messages": messages})
 
 
@@ -135,7 +130,7 @@ def get_all_msg():
 @auth_required
 def get_all_unread_messages():
     messages = get_all_msgs(False)
-    if not  messages.first():
+    if len(messages) == 0:
         return 'all messages were read!'
     return jsonify({"messages": messages})
 
@@ -157,6 +152,8 @@ def read_msg():
 def delete_msg():
     username = request.authorization.username
     msg = Message.query.filter(or_(Message.sender == username, Message.receiver == username)).first()
+    if not msg:
+        return 'No messages in the system!'
     db.session.delete(msg)
     db.session.commit()
     return 'message deleted!'
@@ -164,8 +161,8 @@ def delete_msg():
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return '<h1>Welcome to my restAPI!</h1>'
 
 
-if __name__ == '__main__':  #check is its the main file
+if __name__ == '__main__':
     app.run()
