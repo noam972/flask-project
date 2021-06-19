@@ -135,6 +135,8 @@ def get_all_msg():
 @auth_required
 def get_all_unread_messages():
     messages = get_all_msgs(False)
+    if not  messages.first():
+        return 'all messages were read!'
     return jsonify({"messages": messages})
 
 
